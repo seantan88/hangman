@@ -4,10 +4,13 @@ class Screen:
        head = ["O"]
        neck = ["|"]
        torsoArms = ["--|--"]
-       legs = ["/ \"]
+       legs = ["/ /"]
 
-       body = [[][][][]]
-       for i in range(0), len(body):
+
+
+       
+       body = [head,neck,torsoArms,legs]
+       for i in range(0), len(body) - 1:
            print(body[i])
 
        
