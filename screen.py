@@ -10,8 +10,8 @@ class Screen:
 
        
        body = [head,neck,torsoArms,legs]
-       for i in range(0), len(body) - 1:
-           print(body[i])
+       for i in range(0, len(body)):
+           print(", ".join(body[i]))
 
        
         
