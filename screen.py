@@ -49,20 +49,39 @@ class Screen:
         self.blankPhrase = blanks
 
     def drawBlanks(self):
-        self.setPhrase()
         blanks = self.getBlankLetters(self.phrase)
-        print(" ".join(blanks))
+        print(" ".join(self.blankPhrase))
         print("\n\n")
 
 
 
     def guessLetter(self):
         password = self.getPhrase()
+        blanks = self.getBlanks()
         guess = str(input("Input a letter:\n\n"))
         if len(guess) > 1:
             print("Please enter a character instead.")
             self.guessLetter
         if guess in password:
+            index = password.index(guess)
+        tempStr = str()
+        for i in range(0, len(guess)):
+            if index == i:
+                tempStr += guess
+            else:
+                tempStr += blanks[i]
+
+        self.blankPhrase = tempStr
+
+    def run(self):
+        self.drawBody()
+        self.setPhrase()
+        self.drawBlanks()
+        self.guessLetter()
+        self.drawBlanks()
+
+
+
             
 
 
