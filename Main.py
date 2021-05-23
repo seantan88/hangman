@@ -12,7 +12,8 @@ man = Screen()
 
 
 def main():
-    man.createMan()
+    man.drawBody();
+    man.drawBlanks();
 
 
 
