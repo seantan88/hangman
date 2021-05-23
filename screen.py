@@ -1,3 +1,5 @@
+from getpass import getpass
+
 class Screen:
 
     def createMan(self):
@@ -28,7 +30,7 @@ class Screen:
         return blanks
 
     def drawBlanks(self):
-        phrase = str(input("Please enter word\n\n"))
+        phrase = getpass("Please enter word\n\n")
         blanks = self.getBlankLetters(phrase)
         print(" ".join(blanks))
         print("\n\n")
