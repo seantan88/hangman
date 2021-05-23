@@ -3,6 +3,7 @@ from getpass import getpass
 class Screen:
 
     phrase = str()
+    blankPhrase = str()
 
     def setPhrase(self):
         self.phrase = getpass("Please enter word\n\n")
@@ -10,7 +11,11 @@ class Screen:
     def getPhrase(self):
         return self.phrase
 
+    def getBlanks(self):
+        return self.blankPhrase
 
+    def setBlanks(self, str):
+        self.blankPhrase = str
 
 
 
@@ -41,7 +46,7 @@ class Screen:
                 blanks.append("_")
             else:
                 blanks.append(" ")
-        return blanks
+        self.blankPhrase = blanks
 
     def drawBlanks(self):
         self.setPhrase()
