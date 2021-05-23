@@ -2,6 +2,19 @@ from getpass import getpass
 
 class Screen:
 
+    phrase = str()
+
+    def setPhrase(self):
+        self.phrase = getpass("Please enter word\n\n")
+
+    def getPhrase(self):
+        return self.phrase
+
+
+
+
+
+
     def createMan(self):
        head = ["  O"]
        neck = ["  |"]
@@ -19,6 +32,7 @@ class Screen:
         
        print("\n\n")
 
+
     def getBlankLetters(self, phrase):
         phrase = str(phrase)
         blanks = []
@@ -30,10 +44,14 @@ class Screen:
         return blanks
 
     def drawBlanks(self):
-        phrase = getpass("Please enter word\n\n")
-        blanks = self.getBlankLetters(phrase)
+        self.setPhrase()
+        blanks = self.getBlankLetters(self.phrase)
         print(" ".join(blanks))
         print("\n\n")
+
+
+
+
             
         
     
