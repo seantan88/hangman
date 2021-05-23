@@ -51,7 +51,17 @@ class Screen:
 
 
 
+    def guessLetter(self):
+        password = self.getPhrase()
+        guess = str(input("Input a letter:\n\n"))
+        if len(guess) > 1:
+            print("Please enter a character instead.")
+            self.guessLetter
+        if guess in password:
+            
 
+
+        
             
         
     
