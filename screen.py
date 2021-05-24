@@ -78,6 +78,7 @@ class Screen:
             print(guess + " does not occur")
 
     def guessSolve(self):
+        indices = []
         solve = str(input("Input a word: \n\n"))
         if solve == "exit":
             exit()
@@ -90,7 +91,18 @@ class Screen:
             print("Congratulations you win!!! Poggers")
         
         if solve in self.phrase:
-            
+            index = self.phrase.index(solve)
+        else:
+            print("That word does not occur here!")
+            return
+
+        
+        for i in range(index, index+len(solve)):
+            self.blankPhrase[i] = self.phrase[i]
+
+
+        
+
 
 
 
@@ -104,7 +116,7 @@ class Screen:
     def run(self):
         self.drawBody()
         self.drawBlanks()
-        self.guessLetter()
+        self.guessSolve()
         self.run()
 
 
