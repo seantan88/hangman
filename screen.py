@@ -3,6 +3,8 @@ import os
 
 class Screen:
 
+        def clear(self):
+        os.system('cls')
 
     phrase = str()
     blankPhrase = []
