@@ -77,6 +77,24 @@ class Screen:
         else:
             print(guess + " does not occur")
 
+    def guessSolve(self):
+        solve = str(input("Input a word: \n\n"))
+        if solve == "exit":
+            exit()
+        
+        if len(solve) < 1: 
+            print("Please enter a whole word instead.")
+            self.guessSolve
+        
+        if self.phrase == solve:
+            print("Congratulations you win!!! Poggers")
+        
+        if solve in self.phrase:
+            
+
+
+
+
 
 
     def start(self):
