@@ -3,7 +3,7 @@ import os
 
 class Screen:
 
-        def clear(self):
+    def clear(self):
         os.system('cls')
 
     phrase = str()
