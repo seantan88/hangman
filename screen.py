@@ -8,6 +8,8 @@ class Screen:
 
     phrase = str()
     blankPhrase = []
+    body = []
+    wrongLetters = []
 
     def setPhrase(self):
         self.phrase = getpass("Please enter word\n\n")
@@ -22,7 +24,8 @@ class Screen:
         self.blankPhrase = str
 
 
-
+    def removePart(self):
+        self.body.pop()
 
     def createMan(self):
        head = ["  O"]
@@ -30,16 +33,25 @@ class Screen:
        torsoArms = ["--|--"]
        legs = [" / /"]
 
-       body = [head,neck,torsoArms,legs]
-       return body
+       self.body = [head, neck, torsoArms, legs]
        
        
     def drawBody(self):
-       body = self.createMan()
-       for i in range(0, len(body)):
-           print(", ".join(body[i]))
+       for i in range(0, len(self.body)):
+           print(", ".join(self.body[i]))
         
        print("\n\n")
+
+
+    def addWrongLetter(self, letter):
+        self.wrongLetters.append[letter]
+    
+
+    def printWrongLetters(self):
+        for i in range(0, len(self.wrongLetters)):
+           print(", ".join(self.printWrongLetters[i]))
+        
+        print("\n\n")
 
 
     def getBlankLetters(self):
@@ -76,9 +88,11 @@ class Screen:
                 self.blankPhrase[indices[i]] = guess         
         else:
             print(guess + " does not occur")
+            self.removePart()
+            self.addWrongLetter(guess)
+
 
     def guessSolve(self):
-        indices = []
         solve = str(input("Input a word: \n\n"))
         if solve == "exit":
             exit()
@@ -94,9 +108,9 @@ class Screen:
             index = self.phrase.index(solve)
         else:
             print("That word does not occur here!")
+            self.removePart()
             return
 
-        
         for i in range(index, index+len(solve)):
             self.blankPhrase[i] = self.phrase[i]
 
@@ -112,11 +126,13 @@ class Screen:
     def start(self):
         self.setPhrase()
         self.getBlankLetters()
+        self.createMan()
 
     def run(self):
+        self.printWrongLetters()
         self.drawBody()
         self.drawBlanks()
-        self.guessSolve()
+        self.guessLetter()
         self.run()
 
 
