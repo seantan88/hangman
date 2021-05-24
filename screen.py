@@ -1,9 +1,11 @@
 from getpass import getpass
+import os
 
 class Screen:
 
+
     phrase = str()
-    blankPhrase = str()
+    blankPhrase = []
 
     def setPhrase(self):
         self.phrase = getpass("Please enter word\n\n")
@@ -38,47 +40,52 @@ class Screen:
        print("\n\n")
 
 
-    def getBlankLetters(self, phrase):
-        phrase = str(phrase)
+    def getBlankLetters(self):
         blanks = []
-        for i in range(0, len(phrase)):
-            if (phrase[i] != ' '):
+        for i in range(0, len(self.phrase)):
+            if (self.phrase[i] != ' '):
                 blanks.append("_")
             else:
                 blanks.append(" ")
         self.blankPhrase = blanks
 
     def drawBlanks(self):
-        blanks = self.getBlankLetters(self.phrase)
         print(" ".join(self.blankPhrase))
         print("\n\n")
 
 
 
     def guessLetter(self):
-        password = self.getPhrase()
-        blanks = self.getBlanks()
         guess = str(input("Input a letter:\n\n"))
+        indices = []
+        if guess == "exit":
+            exit()
+        
         if len(guess) > 1:
             print("Please enter a character instead.")
             self.guessLetter
-        if guess in password:
-            index = password.index(guess)
-        tempStr = str()
-        for i in range(0, len(guess)):
-            if index == i:
-                tempStr += guess
-            else:
-                tempStr += blanks[i]
 
-        self.blankPhrase = tempStr
+        for i in range(0, len(self.phrase)):
+            if self.phrase[i] == guess:
+                indices.append(i)
+        
+        if len(indices) > 0:
+            for i in range(0, len(indices)):
+                self.blankPhrase[indices[i]] = guess         
+        else:
+            print(guess + " does not occur")
+
+
+
+    def start(self):
+        self.setPhrase()
+        self.getBlankLetters()
 
     def run(self):
         self.drawBody()
-        self.setPhrase()
         self.drawBlanks()
         self.guessLetter()
-        self.drawBlanks()
+        self.run()
 
 
 

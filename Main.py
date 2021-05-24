@@ -12,6 +12,7 @@ man = Screen()
 
 
 def main():
+    man.start()
     man.run()
 
 
