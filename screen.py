@@ -34,7 +34,27 @@ class Screen:
        legs = [" / /"]
 
        self.body = [head, neck, torsoArms, legs]
+
+    def lossCondition(self):
+        if len(self.body) < 1:
+            print("You lose!")
+            exit()
+
+    def winCondition(self):
+        if "_" not in self.blankPhrase:
+            print("Congratulations you win!! Poggers!")
+            exit()
+
+    def chooseBtwn(self):
+        choice = input("Would you like to guess a letter or solve?")
+        if choice == "letter":
+            return 1
+
+        if choice == "solve":
+            return 0
        
+        else:
+             self.chooseBtwn()
        
     def drawBody(self):
        for i in range(0, len(self.body)):
@@ -44,12 +64,12 @@ class Screen:
 
 
     def addWrongLetter(self, letter):
-        self.wrongLetters.append[letter]
+        self.wrongLetters.append(letter)
     
 
     def printWrongLetters(self):
         for i in range(0, len(self.wrongLetters)):
-           print(", ".join(self.printWrongLetters[i]))
+           print(", ".join(self.wrongLetters[i]))
         
         print("\n\n")
 
@@ -77,7 +97,7 @@ class Screen:
         
         if len(guess) > 1:
             print("Please enter a character instead.")
-            self.guessLetter
+            self.guessLetter()
 
         for i in range(0, len(self.phrase)):
             if self.phrase[i] == guess:
@@ -100,9 +120,7 @@ class Screen:
         if len(solve) < 1: 
             print("Please enter a whole word instead.")
             self.guessSolve
-        
-        if self.phrase == solve:
-            print("Congratulations you win!!! Poggers")
+    
         
         if solve in self.phrase:
             index = self.phrase.index(solve)
@@ -124,16 +142,26 @@ class Screen:
 
 
     def start(self):
+        self.clear()
         self.setPhrase()
         self.getBlankLetters()
         self.createMan()
 
     def run(self):
+        
         self.printWrongLetters()
         self.drawBody()
         self.drawBlanks()
-        self.guessLetter()
+        choice = self.chooseBtwn()
+        if choice == 1:
+            self.guessLetter()
+        else:
+            self.guessSolve()
+        self.lossCondition()
+        self.winCondition()
+        self.clear()
         self.run()
+        
 
 
 
