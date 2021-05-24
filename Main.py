@@ -1,8 +1,9 @@
 from screen import Screen
+from FileReader import FileReader
 
 
 man = Screen()
-
+reader = FileReader()
 
 
 
@@ -12,8 +13,11 @@ man = Screen()
 
 
 def main():
-    man.start()
-    man.run()
+    #man.start()
+    #man.run()
+    reader.read()
+    reader.printWords()
+
 
 
 
