@@ -153,10 +153,12 @@ class Screen:
         self.drawBody()
         self.drawBlanks()
         choice = self.chooseBtwn()
+        
         if choice == 1:
             self.guessLetter()
         else:
             self.guessSolve()
+        
         self.lossCondition()
         self.winCondition()
         self.clear()
