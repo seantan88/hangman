@@ -11,5 +11,9 @@ class FileReader:
                 for word in row:
                     self.words.append(word)
 
+
+    def printWords(self):
+        for word in self.words:
+            print(word)
+
     def chooseWord(self):
-    
