@@ -1,4 +1,5 @@
 import csv
+import random
 
 class FileReader:
 
@@ -17,3 +18,8 @@ class FileReader:
             print(word)
 
     def chooseWord(self):
+        word = random.randrange(0,len(self.words))
+        
+        print(self.words[word])
+        
+
