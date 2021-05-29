@@ -1,4 +1,5 @@
 from getpass import getpass
+from FileReader import FileReader
 import os
 
 class Screen:
@@ -11,8 +12,14 @@ class Screen:
     body = []
     wrongLetters = []
 
-    def setPhrase(self):
-        self.phrase = getpass("Please enter word\n\n")
+    def setPhrase(self, num):
+        if num == 1:
+            self.phrase = getpass("Please enter word\n\n")
+        elif num == 2:
+            fr = FileReader()
+            fr.read()
+            word = fr.chooseWord()
+            self.phrase = word
 
     def getPhrase(self):
         return self.phrase
@@ -38,6 +45,7 @@ class Screen:
     def lossCondition(self):
         if len(self.body) < 1:
             print("You lose!")
+            print(self.getPhrase())
             exit()
 
     def winCondition(self):
@@ -50,8 +58,11 @@ class Screen:
         if choice == "letter":
             return 1
 
-        if choice == "solve":
+        elif choice == "solve":
             return 0
+
+        elif choice == "exit":
+            exit()
        
         else:
              self.chooseBtwn()
@@ -132,18 +143,41 @@ class Screen:
         for i in range(index, index+len(solve)):
             self.blankPhrase[i] = self.phrase[i]
 
+    def mainMenu(self):
+        print("1 for custom phrase, 2 for random word")
+        response = str(input())
+        if response == "1":
+            self.setPhrase(1)
 
-        
+        elif response == "2":
+            self.setPhrase(2)
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def play(self):
+        self.clear()
+        self.mainMenu()
+        self.start()
+        self.run()
 
     def start(self):
         self.clear()
-        self.setPhrase()
         self.getBlankLetters()
         self.createMan()
 

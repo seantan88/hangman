@@ -13,10 +13,8 @@ reader = FileReader()
 
 
 def main():
-    #man.start()
-    #man.run()
-    reader.read()
-    reader.printWords()
+    man.play()
+
 
 
 

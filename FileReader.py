@@ -19,7 +19,6 @@ class FileReader:
 
     def chooseWord(self):
         word = random.randrange(0,len(self.words))
-        
-        print(self.words[word])
+        return self.words[word]
         
 
